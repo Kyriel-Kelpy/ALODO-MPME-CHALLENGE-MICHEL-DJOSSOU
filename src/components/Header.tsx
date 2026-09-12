@@ -1,11 +1,11 @@
-import { CheckCircle2, Menu, Waypoints } from "lucide-react";
+import { CheckCircle2, Waypoints } from "lucide-react";
 import type { Dimension } from "../types/diagnostic";
 import { DimensionBadge } from "./DimensionBadge";
 
 type HeaderProps = {
   /** Dimension en cours — affiche un badge à droite (masqué sur mobile, comme sur la maquette) */
   dimension?: Dimension;
-  /** Affiche le stepper Profil/Questions/Calcul/Résultats (desktop) + le menu (mobile) */
+  /** Affiche le stepper Profil/Questions/Calcul/Résultats (desktop uniquement) */
   showStepper?: boolean;
 };
 
@@ -61,18 +61,7 @@ export function Header({ dimension, showStepper }: HeaderProps) {
         </span>
       )}
 
-      {showStepper && (
-        <>
-          <ResultsStepper />
-          <button
-            type="button"
-            aria-label="Menu"
-            className="flex h-9 w-9 items-center justify-center rounded-lg text-text sm:hidden"
-          >
-            <Menu size={20} />
-          </button>
-        </>
-      )}
+      {showStepper && <ResultsStepper />}
     </header>
   );
 }

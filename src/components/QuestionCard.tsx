@@ -29,7 +29,7 @@ export function QuestionCard({
   nextDisabled,
 }: QuestionCardProps) {
   return (
-    <div className="mx-auto w-full max-w-3xl">
+    <div className="mx-auto w-full max-w-3xl px-6 py-8 sm:px-10 sm:py-12">
       <div className="mb-6 flex items-center justify-between gap-4">
         <div className="flex-1">
           <p className="mb-2 text-sm font-medium text-text-secondary">
