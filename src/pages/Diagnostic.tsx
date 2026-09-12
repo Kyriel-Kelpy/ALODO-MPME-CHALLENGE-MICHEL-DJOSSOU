@@ -40,7 +40,11 @@ export function Diagnostic({
       nextDisabled={!canContinue}
       hint="Votre réponse nous aidera à mieux analyser votre situation."
     >
-      <div role="radiogroup" aria-label={question.question} className="space-y-3">
+      <div
+        role="radiogroup"
+        aria-label={question.question}
+        className="grid grid-cols-1 gap-3 sm:grid-cols-2"
+      >
         {question.options.map((option) => (
           <AnswerCard
             key={option.id}
@@ -52,7 +56,7 @@ export function Diagnostic({
       </div>
 
       {question.optionalFields && question.optionalFields.length > 0 && (
-        <div className="space-y-4 pt-2">
+        <div className="space-y-4">
           {question.optionalFields.map((field) => (
             <OptionalFieldInput
               key={field.id}

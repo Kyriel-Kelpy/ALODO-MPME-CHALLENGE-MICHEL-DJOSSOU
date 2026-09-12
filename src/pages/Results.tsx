@@ -1,4 +1,4 @@
-import { RotateCcw, Target, Star, AlertTriangle, Lightbulb } from "lucide-react";
+import { RotateCcw, Target, Star, AlertTriangle, Lightbulb, ChevronRight, CheckCircle2 } from "lucide-react";
 import type { DiagnosticResult } from "../types/diagnostic";
 import { dimensionMeta, resultsCopy, dimensionStrengthCopy, dimensionVigilanceCopy } from "../data/messages";
 import { getResultNarrative } from "../utils/results";
@@ -43,11 +43,14 @@ export function Results({ result, onRestart }: ResultsProps) {
       </div>
 
       <div className="mb-8 rounded-2xl border border-primary/30 bg-primary/5 p-5">
-        <div className="mb-2 flex items-center gap-2">
-          <Target size={18} className="text-primary" />
-          <p className="font-medium text-text">
-            Votre priorité : <span className="text-primary">{priorityLabel}</span>
-          </p>
+        <div className="mb-2 flex items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <Target size={18} className="text-primary" />
+            <p className="font-medium text-text">
+              Votre priorité : <span className="text-primary">{priorityLabel}</span>
+            </p>
+          </div>
+          <ChevronRight size={18} className="shrink-0 text-primary" />
         </div>
         <p className="text-sm text-text-secondary">{narrative}</p>
       </div>
@@ -59,9 +62,12 @@ export function Results({ result, onRestart }: ResultsProps) {
           title={resultsCopy.strengthsTitle}
         >
           {topStrengths.map((dim) => (
-            <div key={dim}>
-              <p className="text-sm font-medium text-text">{dimensionMeta[dim].label}</p>
-              <p className="text-sm text-text-secondary">{dimensionStrengthCopy[dim]}</p>
+            <div key={dim} className="flex items-start gap-2">
+              <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-success" />
+              <div>
+                <p className="text-sm font-medium text-text">{dimensionMeta[dim].label}</p>
+                <p className="text-sm text-text-secondary">{dimensionStrengthCopy[dim]}</p>
+              </div>
             </div>
           ))}
         </InfoCard>
@@ -71,11 +77,14 @@ export function Results({ result, onRestart }: ResultsProps) {
           iconClassName="bg-warning/10 text-warning"
           title={resultsCopy.vigilanceTitle}
         >
-          <div>
-            <p className="text-sm font-medium text-text">{dimensionMeta[result.vigilance].label}</p>
-            <p className="text-sm text-text-secondary">
-              {dimensionVigilanceCopy[result.vigilance]}
-            </p>
+          <div className="flex items-start gap-2">
+            <AlertTriangle size={16} className="mt-0.5 shrink-0 text-warning" />
+            <div>
+              <p className="text-sm font-medium text-text">{dimensionMeta[result.vigilance].label}</p>
+              <p className="text-sm text-text-secondary">
+                {dimensionVigilanceCopy[result.vigilance]}
+              </p>
+            </div>
           </div>
         </InfoCard>
 

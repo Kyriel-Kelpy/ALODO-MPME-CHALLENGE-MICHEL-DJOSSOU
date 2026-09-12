@@ -110,7 +110,10 @@ function App() {
   return (
     <div className="min-h-svh bg-bg">
       <DataDecor />
-      <Header />
+      <Header
+        dimension={page === "diagnostic" ? questions[diagnosticStep].dimension : undefined}
+        showStepper={page === "results"}
+      />
       {page === "welcome" && <Welcome onStart={() => setPage("profile")} />}
       {page === "profile" && (
         <Profile

@@ -39,7 +39,11 @@ export function Profile({
       onNext={onNext}
       nextDisabled={!canContinue}
     >
-      <div role="radiogroup" aria-label={question.question} className="space-y-3">
+      <div
+        role="radiogroup"
+        aria-label={question.question}
+        className="grid grid-cols-1 gap-3 sm:grid-cols-2"
+      >
         {question.options.map((option) => (
           <AnswerCard
             key={option.id}
@@ -56,7 +60,7 @@ export function Profile({
           value={freeTextValue}
           onChange={(e) => onFreeText(question.id, e.target.value)}
           placeholder={question.freeTextPlaceholder}
-          className="mt-2 w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-text placeholder:text-text-secondary/60 focus:border-primary"
+          className="w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-text placeholder:text-text-secondary/60 focus:border-primary"
         />
       )}
     </QuestionCard>

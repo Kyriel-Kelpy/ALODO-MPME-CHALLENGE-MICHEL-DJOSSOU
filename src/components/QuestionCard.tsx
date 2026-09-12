@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Info } from "lucide-react";
 import type { Dimension } from "../types/diagnostic";
 import { DimensionBadge } from "./DimensionBadge";
 import { ProgressBar } from "./ProgressBar";
@@ -29,7 +29,7 @@ export function QuestionCard({
   nextDisabled,
 }: QuestionCardProps) {
   return (
-    <div className="mx-auto w-full max-w-2xl">
+    <div className="mx-auto w-full max-w-3xl">
       <div className="mb-6 flex items-center justify-between gap-4">
         <div className="flex-1">
           <p className="mb-2 text-sm font-medium text-text-secondary">
@@ -44,10 +44,11 @@ export function QuestionCard({
         {question}
       </h1>
 
-      <div className="space-y-3">{children}</div>
+      <div className="space-y-4">{children}</div>
 
       {hint && (
         <p className="mt-4 flex items-start gap-2 text-sm text-text-secondary">
+          <Info size={16} className="mt-0.5 shrink-0" />
           {hint}
         </p>
       )}
